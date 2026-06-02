@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みんなで勝ち時ラジオ 端末インストール手順</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-dark: #282828;
+    --primary: #5f6e84;
+    --primary-mid: #8c9bb4;
+    --primary-light: #99aac6;
+    --text-main: #1f1f1f;
+    --text-sub: #5e5e5e;
+    --bg: #f6f7f9;
+    --accent: #5f6e84;
+    --complete-bg: #e7ebf1;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* TOP BANNER */
+  .top-banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(to bottom, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 48px 24px 56px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.95;
+    line-height: 1.7;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  /* BRAND LOCKUP (hero, top-left) */
+  .hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 28px;
+  }
+
+  .hero-brand .brand-mark {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .hero-brand .brand-text {
+    height: 15px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 380px) {
+    .hero-brand .brand-mark { height: 26px; }
+    .hero-brand .brand-text { height: 13px; }
+  }
+
+  /* STEP CARD */
+  .step-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(40, 40, 40, 0.08);
+    padding: 28px 24px;
+    margin-bottom: 20px;
+  }
+
+  .step-card.complete {
+    background: var(--complete-bg);
+  }
+
+  .step-badge {
+    display: inline-block;
+    background: var(--primary-dark);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .step-title {
+    color: var(--primary);
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+
+  .step-desc {
+    color: var(--text-sub);
+    font-size: 15px;
+    margin: 0 0 18px;
+    line-height: 1.8;
+    word-break: auto-phrase;
+    line-break: strict;
+  }
+
+  .nw {
+    white-space: nowrap;
+  }
+
+  .step-card:last-child .step-desc,
+  .step-card.complete .step-desc {
+    margin-bottom: 0;
+  }
+
+  /* STEP IMAGE */
+  .step-img {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 18px auto 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(40, 40, 40, 0.18);
+  }
+
+  .step-img.app-icon {
+    max-width: 120px;
+    box-shadow: none;
+  }
+
+  /* TIP NOTE */
+  .step-tip {
+    margin: 16px 0 0;
+    background: rgba(153, 170, 198, 0.22);
+    border: 1px solid rgba(95, 110, 132, 0.25);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+
+  .step-tip b {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* CTA BUTTONS */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .btn-cta {
+    display: block;
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+  }
+
+  .btn-cta:active {
+    opacity: 0.85;
+    transform: scale(0.99);
+  }
+
+  /* COPY BOX (STEP 6) */
+  .copy-box {
+    border: 2px dashed var(--primary-mid);
+    background: rgba(153, 170, 198, 0.19);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s ease;
+  }
+
+  .copy-box:active {
+    background: rgba(153, 170, 198, 0.35);
+  }
+
+  .copy-label-top,
+  .copy-label-bottom {
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .copy-label-top {
+    margin-bottom: 14px;
+  }
+
+  .copy-label-bottom {
+    margin-top: 14px;
+  }
+
+  .copy-url {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-main);
+    word-break: break-all;
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(40, 40, 40, 0.08);
+    padding: 32px 24px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .contact-icon {
+    font-size: 44px;
+    color: #939292;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .contact-title {
+    font-weight: 700;
+    font-size: 17px;
+    margin: 0 0 12px;
+    color: var(--text-main);
+  }
+
+  .contact-body {
+    color: var(--text-sub);
+    font-size: 14px;
+    margin: 0 0 14px;
+    line-height: 1.8;
+  }
+
+  .contact-email {
+    font-size: 15px;
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+
+<img class="top-banner" src="top.png" alt="みんなで勝ち時ラジオ" loading="lazy" onerror="this.style.display='none'">
+
+<header class="hero">
+  <div class="hero-brand">
+    <img class="brand-mark" src="logo-mark-white.png" alt="" loading="lazy" onerror="this.style.display='none'">
+    <img class="brand-text" src="logo-text-white.png" alt="株式会社メディアエイド" loading="lazy" onerror="this.style.display='none'">
+  </div>
+  <h1>みんなで勝ち時ラジオ<br>端末インストール手順</h1>
+  <p>下記の手順にて、<span class="nw">音声プログラムを</span><span class="nw">インストールしてください。</span></p>
+</header>
+
+<main class="container">
+
+  <!-- STEP 1 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 1</span>
+    <h2 class="step-title">YouTube Music を準備</h2>
+    <p class="step-desc">まず <span class="nw">YouTube Music</span> アプリをインストールします。下のボタンから入手してください（すでにお持ちの方は <span class="nw">STEP 2</span> へ）。</p>
+    <img class="step-img app-icon" src="youtube-music.png" alt="YouTube Music アプリのアイコン" loading="lazy" onerror="this.style.display='none'">
+    <div class="btn-group">
+      <a class="btn-cta" href="https://apps.apple.com/jp/app/youtube-music/id1017492454" target="_blank" rel="noopener">App Store からダウンロード</a>
+      <a class="btn-cta" href="https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music" target="_blank" rel="noopener">Google Play で手に入れよう</a>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 2</span>
+    <h2 class="step-title">ライブラリを開く</h2>
+    <p class="step-desc"><span class="nw">YouTube Music</span> アプリを起動し、画面下の<span class="nw">「ライブラリ」</span>をタップします。</p>
+    <img class="step-img" src="step01.png" alt="STEP 2 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 3</span>
+    <h2 class="step-title">ポッドキャストに切り替え</h2>
+    <p class="step-desc">上部のメニューから<span class="nw">「ポッドキャスト」</span>をタップします。</p>
+    <img class="step-img" src="step02.png" alt="STEP 3 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 4</span>
+    <h2 class="step-title">ポッドキャストを追加</h2>
+    <p class="step-desc">画面の<span class="nw">「＋ ポッドキャストを追加」</span>をタップします。</p>
+    <img class="step-img" src="step03.png" alt="STEP 4 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 5</span>
+    <h2 class="step-title">RSSフィードを選択</h2>
+    <p class="step-desc">表示されたメニューから「RSS フィードでポッドキャストを追加する」をタップします。</p>
+    <img class="step-img" src="step04.png" alt="STEP 5 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 6</span>
+    <h2 class="step-title">URLを貼り付ける</h2>
+    <p class="step-desc">まず下の枠をタップすると、フィードのURLが自動でコピーされます。</p>
+    <div class="copy-box" id="copyBox" role="button" tabindex="0" aria-label="URLをコピー">
+      <p class="copy-label-top" id="copyLabelTop">📎 タップして自動コピー</p>
+      <div class="copy-url" id="copyUrl">https://mediaaidradio-lab.github.io/kachidoki-radio/podcast.xml</div>
+      <p class="copy-label-bottom">👆 ここをタップ</p>
+    </div>
+    <p class="step-tip">💡 <b>貼り付け方</b>：<span class="nw">YouTube Music</span> の入力欄を<b>長押し</b>し、出てきた「<b>ペースト（貼り付け）</b>」をタップします。</p>
+    <img class="step-img" src="step05.png" alt="STEP 6 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 7 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 7</span>
+    <h2 class="step-title">「追加」をタップ</h2>
+    <p class="step-desc">入力欄の下にある<span class="nw">「追加」</span>ボタンをタップします。</p>
+    <img class="step-img" src="step06.png" alt="STEP 7 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 8 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 8</span>
+    <h2 class="step-title">追加されるまで待つ</h2>
+    <p class="step-desc">「ポッドキャストを追加しています」と表示されます。完了まで数分かかることがあります。</p>
+    <img class="step-img" src="step07.png" alt="STEP 8 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 9 -->
+  <section class="step-card">
+    <span class="step-badge">STEP 9</span>
+    <h2 class="step-title">ライブラリに表示</h2>
+    <p class="step-desc">ライブラリに<span class="nw">「みんなで勝ち時ラジオ」</span>が表示されれば追加成功です。</p>
+    <img class="step-img" src="step08.png" alt="STEP 9 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+  <!-- STEP 10 -->
+  <section class="step-card complete">
+    <span class="step-badge">STEP 10</span>
+    <h2 class="step-title">完了！</h2>
+    <p class="step-desc">番組ページで<span class="nw">「ライブラリに保存」</span>をタップすれば完了です。いつでも音声をお聴きいただけます。</p>
+    <img class="step-img" src="step09.png" alt="STEP 10 の操作画面" loading="lazy" onerror="this.style.display='none'">
+  </section>
+
+
+</main>
+
+<script>
+  (function () {
+    var box = document.getElementById('copyBox');
+    var labelTop = document.getElementById('copyLabelTop');
+    var urlEl = document.getElementById('copyUrl');
+    var defaultText = '📎 タップして自動コピー';
+    var successText = '✅ コピーしました！';
+    var revertTimer = null;
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function showSuccess() {
+      labelTop.textContent = successText;
+      if (revertTimer) clearTimeout(revertTimer);
+      revertTimer = setTimeout(function () {
+        labelTop.textContent = defaultText;
+      }, 2000);
+    }
+
+    function copyUrl() {
+      var text = urlEl.textContent.trim();
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showSuccess, function () {
+          fallbackCopy(text);
+          showSuccess();
+        });
+      } else {
+        fallbackCopy(text);
+        showSuccess();
+      }
+    }
+
+    box.addEventListener('click', copyUrl);
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        copyUrl();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

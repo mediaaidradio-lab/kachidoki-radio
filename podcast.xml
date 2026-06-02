@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>みんなで勝ち時ラジオ</title>
+    <description>みんなで遠くへ行くための、九島の独り言。</description>
+    <language>ja</language>
+    <itunes:author>株式会社メディアエイド</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://mediaaidradio-lab.github.io/kachidoki-radio/cover.png"/>
+    <!--
+      ここから下に <item> を追記していきます（1回 = 1エピソード）。
+      新エピソード追加時のひな形:
+
+      <item>
+        <title>第01回｜タイトル</title>
+        <description>このエピソードの内容を1〜2行で。</description>
+        <enclosure
+          url="https://mediaaidradio-lab.github.io/kachidoki-radio/episode01.mp3"
+          type="audio/mpeg"
+          length="ここに mp3 の正確なバイトサイズ"/>
+        <pubDate>Mon, 02 Jun 2026 09:00:00 +0900</pubDate>
+        <guid>kachidoki-ep-001</guid>
+      </item>
+    -->
+  </channel>
+</rss>
